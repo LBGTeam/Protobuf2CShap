@@ -1,6 +1,8 @@
 import os
 import sys
 
+from Utils.LogUtil import ShowLog
+
 
 def ExePath():
     if hasattr(sys, 'frozen'):
@@ -10,9 +12,11 @@ def ExePath():
     return path_py  # 没打包前的py目录
 
 
-def CheckPath(path):
+def CheckPath(path, isDir=False):
     # 获取文件所在路径
-    pathDir = os.path.dirname(path)
+    pathDir = path
+    if not isDir or os.path.isfile(path):
+        pathDir = os.path.dirname(path)
     # 如果路径不存在就创建路径
     os.makedirs(pathDir, exist_ok=True)
     # 如果路径是文件且文件不存在就创建文件
@@ -23,8 +27,3 @@ def CheckPath(path):
 
 
 RootPath = os.path.abspath(os.path.join(ExePath(), '..'))
-SavesPath = CheckPath(os.path.join(RootPath, 'Saves'))
-ScriptsPath = CheckPath(os.path.join(RootPath, 'Scripts'))
-DefProtosExePath = os.path.join(RootPath, 'Libs', 'protoc', 'bin', 'protoc.exe')
-DefProtosPath = CheckPath(os.path.join(RootPath, 'Protos'))
-ConfigsPath = CheckPath(os.path.join(SavesPath, 'Config.json'))

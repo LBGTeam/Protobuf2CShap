@@ -1,5 +1,9 @@
 {
     "ProtoExePath": "F:\\MyPrograme\\Protobuf2CShap\\Libs\\protoc\\bin\\protoc.exe",
     "ProtoPath": "F:\\MyPrograme\\Protobuf2CShap\\Protos",
-    "OutScriptsPath": ""
+    "OutCShapScriptsPath": "",
+    "OutPythonScriptsPath": "",
+    "ProtosIdsName": "client_gen.proto",
+    "ProtoClientPattern": "^client_|common\\.proto$",
+    "ProtoMsgPattern": "message\\s+(\\w+(?:REQ|ACK|PUSH))"
 }
