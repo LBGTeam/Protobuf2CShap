@@ -4,4 +4,6 @@
 /__pycache__
 /venv
 /Protos
-/Scripts/*
+/CShapScripts/*
+/PythonScripts/*
+/Saves/*
