@@ -3,30 +3,220 @@
 # source: client_login.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
-from google.protobuf import descriptor_pool as _descriptor_pool
+from google.protobuf import message as _message
+from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-from google.protobuf.internal import builder as _builder
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
-import common_pb2 as common__pb2
+import Network.ProtoPB2.common_pb2 as common__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12\x63lient_login.proto\x12\x07myproto\x1a\x0c\x63ommon.proto\"\t\n\x07PingREQ\"?\n\x07PingACK\x12 \n\x03Ret\x18\x01 \x01(\x0e\x32\x13.myproto.ResultCode\x12\x12\n\nServerTime\x18\x02 \x01(\x03\".\n\tVerifyREQ\x12\x0f\n\x07\x61\x63\x63ount\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"-\n\tVerifyACK\x12 \n\x03Ret\x18\x01 \x01(\x0e\x32\x13.myproto.ResultCodeb\x06proto3')
+DESCRIPTOR = _descriptor.FileDescriptor(
+  name='client_login.proto',
+  package='myproto',
+  syntax='proto3',
+  serialized_options=None,
+  create_key=_descriptor._internal_create_key,
+  serialized_pb=b'\n\x12\x63lient_login.proto\x12\x07myproto\x1a\x0c\x63ommon.proto\"\t\n\x07PingREQ\"e\n\x07PingACK\x12 \n\x03Ret\x18\x01 \x01(\x0e\x32\x13.myproto.ResultCode\x12\x12\n\nServerTime\x18\x02 \x01(\x03\x12\x0c\n\x04Zone\x18\x03 \x01(\x05\x12\x16\n\x0eTimeZoneOffset\x18\x04 \x01(\x05\".\n\tVerifyREQ\x12\x0f\n\x07\x61\x63\x63ount\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"C\n\tVerifyACK\x12 \n\x03Ret\x18\x01 \x01(\x0e\x32\x13.myproto.ResultCode\x12\x14\n\x0c\x45ncryptToken\x18\x02 \x01(\tb\x06proto3'
+  ,
+  dependencies=[common__pb2.DESCRIPTOR,])
 
-_globals = globals()
-_builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
-_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'client_login_pb2', _globals)
-if _descriptor._USE_C_DESCRIPTORS == False:
-  DESCRIPTOR._options = None
-  _globals['_PINGREQ']._serialized_start=45
-  _globals['_PINGREQ']._serialized_end=54
-  _globals['_PINGACK']._serialized_start=56
-  _globals['_PINGACK']._serialized_end=119
-  _globals['_VERIFYREQ']._serialized_start=121
-  _globals['_VERIFYREQ']._serialized_end=167
-  _globals['_VERIFYACK']._serialized_start=169
-  _globals['_VERIFYACK']._serialized_end=214
+
+
+
+_PINGREQ = _descriptor.Descriptor(
+  name='PingREQ',
+  full_name='myproto.PingREQ',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=45,
+  serialized_end=54,
+)
+
+
+_PINGACK = _descriptor.Descriptor(
+  name='PingACK',
+  full_name='myproto.PingACK',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='Ret', full_name='myproto.PingACK.Ret', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ServerTime', full_name='myproto.PingACK.ServerTime', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Zone', full_name='myproto.PingACK.Zone', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='TimeZoneOffset', full_name='myproto.PingACK.TimeZoneOffset', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=56,
+  serialized_end=157,
+)
+
+
+_VERIFYREQ = _descriptor.Descriptor(
+  name='VerifyREQ',
+  full_name='myproto.VerifyREQ',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='account', full_name='myproto.VerifyREQ.account', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='password', full_name='myproto.VerifyREQ.password', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=159,
+  serialized_end=205,
+)
+
+
+_VERIFYACK = _descriptor.Descriptor(
+  name='VerifyACK',
+  full_name='myproto.VerifyACK',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='Ret', full_name='myproto.VerifyACK.Ret', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='EncryptToken', full_name='myproto.VerifyACK.EncryptToken', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=207,
+  serialized_end=274,
+)
+
+_PINGACK.fields_by_name['Ret'].enum_type = common__pb2._RESULTCODE
+_VERIFYACK.fields_by_name['Ret'].enum_type = common__pb2._RESULTCODE
+DESCRIPTOR.message_types_by_name['PingREQ'] = _PINGREQ
+DESCRIPTOR.message_types_by_name['PingACK'] = _PINGACK
+DESCRIPTOR.message_types_by_name['VerifyREQ'] = _VERIFYREQ
+DESCRIPTOR.message_types_by_name['VerifyACK'] = _VERIFYACK
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+PingREQ = _reflection.GeneratedProtocolMessageType('PingREQ', (_message.Message,), {
+  'DESCRIPTOR' : _PINGREQ,
+  '__module__' : 'client_login_pb2'
+  # @@protoc_insertion_point(class_scope:myproto.PingREQ)
+  })
+_sym_db.RegisterMessage(PingREQ)
+
+PingACK = _reflection.GeneratedProtocolMessageType('PingACK', (_message.Message,), {
+  'DESCRIPTOR' : _PINGACK,
+  '__module__' : 'client_login_pb2'
+  # @@protoc_insertion_point(class_scope:myproto.PingACK)
+  })
+_sym_db.RegisterMessage(PingACK)
+
+VerifyREQ = _reflection.GeneratedProtocolMessageType('VerifyREQ', (_message.Message,), {
+  'DESCRIPTOR' : _VERIFYREQ,
+  '__module__' : 'client_login_pb2'
+  # @@protoc_insertion_point(class_scope:myproto.VerifyREQ)
+  })
+_sym_db.RegisterMessage(VerifyREQ)
+
+VerifyACK = _reflection.GeneratedProtocolMessageType('VerifyACK', (_message.Message,), {
+  'DESCRIPTOR' : _VERIFYACK,
+  '__module__' : 'client_login_pb2'
+  # @@protoc_insertion_point(class_scope:myproto.VerifyACK)
+  })
+_sym_db.RegisterMessage(VerifyACK)
+
+
 # @@protoc_insertion_point(module_scope)

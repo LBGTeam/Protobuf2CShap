@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace ProtosIds {
+namespace Myproto {
 
   /// <summary>Holder for reflection information generated from client_gen.proto</summary>
   public static partial class ClientGenReflection {
@@ -24,19 +24,18 @@ namespace ProtosIds {
     static ClientGenReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChBjbGllbnRfZ2VuLnByb3RvEglQcm90b3NJZHMqYQoJUHJvdG9zSWRzEggK",
-            "BE5PTkUQABIQCgtNc2dfUGluZ1JFURDoBxIQCgtNc2dfUGluZ0FDSxDpBxIS",
-            "Cg1Nc2dfVmVyaWZ5UkVREOoHEhIKDU1zZ19WZXJpZnlBQ0sQ6wdiBnByb3Rv",
-            "Mw=="));
+            "ChBjbGllbnRfZ2VuLnByb3RvEgdteXByb3RvKloKAklEEggKBE5PTkUQABIQ",
+            "CgtNc2dfUGluZ1JFURDoBxIQCgtNc2dfUGluZ0FDSxDpBxISCg1Nc2dfVmVy",
+            "aWZ5UkVREOoHEhIKDU1zZ19WZXJpZnlBQ0sQ6wdiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ProtosIds.ProtosIds), }, null, null));
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Myproto.ID), }, null, null));
     }
     #endregion
 
   }
   #region Enums
-  public enum ProtosIds {
+  public enum ID {
     [pbr::OriginalName("NONE")] None = 0,
     /// <summary>
     /// client_login.proto

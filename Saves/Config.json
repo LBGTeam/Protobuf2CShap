@@ -1,9 +1,11 @@
 {
     "ProtoExePath": "F:\\MyPrograme\\Protobuf2CShap\\Libs\\protoc\\bin\\protoc.exe",
     "ProtoPath": "F:\\MyPrograme\\Protobuf2CShap\\Protos",
-    "OutCShapScriptsPath": "",
-    "OutPythonScriptsPath": "",
+    "OutCShapScriptsPath": "F:\\MyPrograme\\LBFramework\\Client\\Assets\\_Scripts\\Game\\Runtime\\Core\\Net\\ProtosGenerated",
+    "OutPythonScriptsPath": "F:\\MyPrograme\\PyServer\\Network\\ProtoPB2",
     "ProtosIdsName": "client_gen.proto",
     "ProtoClientPattern": "^client_|common\\.proto$",
-    "ProtoMsgPattern": "message\\s+(\\w+(?:REQ|ACK|PUSH))"
+    "ProtoMsgPattern": "message\\s+(\\w+(?:REQ|ACK|PUSH))",
+    "ProtoModuleImportPrefix": "Network.ProtoPB2",
+    "ProtoIdMap": "ProtoGen.py"
 }

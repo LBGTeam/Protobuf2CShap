@@ -7,3 +7,6 @@
 /CShapScripts/*
 /PythonScripts/*
 /Saves/*
+
+/Datas/__pycache__
+/Utils/__pycache__

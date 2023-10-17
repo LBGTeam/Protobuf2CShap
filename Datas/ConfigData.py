@@ -25,6 +25,8 @@ class ConfigData:
         self.ProtosIdsNameData('client_gen.proto')
         self.ProtoClientPatternData(r'^client_|common\.proto$')
         self.ProtoMsgPatternData(r'message\s+(\w+(?:REQ|ACK|PUSH))')
+        self.ProtoModuleImportPrefixData('Network.ProtoPB2')
+        self.ProtoIdMapData('ProtoGen.py')
 
     def LoadJsonData(self):
         return JsonUtil.LoadJsonData(self.JsonPath)
@@ -49,6 +51,12 @@ class ConfigData:
 
     def ProtoMsgPatternData(self, value=None):
         return self.JsonData('ProtoMsgPattern', value)
+
+    def ProtoModuleImportPrefixData(self, value=None):
+        return self.JsonData('ProtoModuleImportPrefix', value)
+
+    def ProtoIdMapData(self, value=None):
+        return self.JsonData('ProtoIdMap', value)
 
     def JsonData(self, key, value=None):
         if value is not None:
