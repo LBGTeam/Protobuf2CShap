@@ -3,7 +3,7 @@ import platform
 import re
 import subprocess
 
-from Utils import FileUtils, LogUtil, PathUtil
+from PyUtils import FileUtil, LogUtil
 from Datas import ConfigData
 from Datas.ConfigData import CfgData
 
@@ -51,18 +51,18 @@ def GenerateAllProto2Scripts():
 
 
 def GenerateAllProto2CShap(proto_dir, output_dir):
-    FileUtils.DeleteDirFiles(output_dir)
+    FileUtil.DeleteDirFiles(output_dir)
     # 生成所有proto文件的C#脚本
     for root, dirs, files in os.walk(proto_dir):
         for file in files:
             if file.endswith('.proto'):
                 GenerateCsharpScript(os.path.join(root, file), proto_dir, output_dir)
-    FileUtils.DeleteDirFiles(CfgData.OutCShapScriptsPathData())
-    FileUtils.CopyDirFiles(ConfigData.CShapScriptsPath, CfgData.OutCShapScriptsPathData())
+    FileUtil.DeleteDirFiles(CfgData.OutCShapScriptsPathData())
+    FileUtil.CopyDirFiles(ConfigData.CShapScriptsPath, CfgData.OutCShapScriptsPathData())
 
 
 def GenerateAllProto2Python(proto_dir, output_dir):
-    FileUtils.DeleteDirFiles(output_dir, None, [CfgData.ProtoIdMapData()])
+    FileUtil.DeleteDirFiles(output_dir, None, [CfgData.ProtoIdMapData()])
     # 生成所有proto文件的Python脚本
     for root, dirs, files in os.walk(proto_dir):
         for file in files:
@@ -80,8 +80,8 @@ def GenerateAllProto2Python(proto_dir, output_dir):
 
                 with open(os.path.join(root, file), 'w', encoding='utf-8') as f:
                     f.write(content)
-    FileUtils.DeleteDirFiles(CfgData.OutPythonScriptsPathData(), ['__pycache__'])
-    FileUtils.CopyDirFiles(ConfigData.PythonScriptsPath, CfgData.OutPythonScriptsPathData())
+    FileUtil.DeleteDirFiles(CfgData.OutPythonScriptsPathData(), ['__pycache__'])
+    FileUtil.CopyDirFiles(ConfigData.PythonScriptsPath, CfgData.OutPythonScriptsPathData())
 
 
 def GenerateAllProtoIds():
@@ -121,7 +121,7 @@ def GenerateAllProtoIds():
         messageMapDes = messageMapDes[:-1]
 
         messageMapDes += '\n}\n'
-        FileUtils.WriteFileContent(os.path.join(ConfigData.PythonScriptsPath, CfgData.ProtoIdMapData()),
+        FileUtil.WriteFileContent(os.path.join(ConfigData.PythonScriptsPath, CfgData.ProtoIdMapData()),
                                    f'{importDes}\n\n{messageMapDes}')
         f.write('}\n')
 

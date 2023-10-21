@@ -1,6 +1,6 @@
 import os
 
-from Utils import JsonUtil, PathUtil
+from PyUtils import JsonUtil, PathUtil
 
 SavesPath = PathUtil.CheckPath(os.path.join(PathUtil.RootPath, 'Saves'), True)
 CShapScriptsPath = PathUtil.CheckPath(os.path.join(PathUtil.RootPath, 'CShapScripts'), True)

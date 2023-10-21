@@ -1,7 +1,7 @@
 import os
 import shutil
 
-from Utils.LogUtil import ShowLog
+from PyUtils.LogUtil import ShowLog
 
 
 def DeleteDirFiles(dir_path):

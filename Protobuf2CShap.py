@@ -1,7 +1,7 @@
 import sys
 
 from ProtobufUtils import GenerateAllProto2Scripts, GenerateAllProtoIds
-from Utils import  LogUtil
+from PyUtils import  LogUtil
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
