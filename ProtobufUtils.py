@@ -57,7 +57,7 @@ def GenerateAllProto2CShap(proto_dir, output_dir):
         for file in files:
             if file.endswith('.proto'):
                 GenerateCsharpScript(os.path.join(root, file), proto_dir, output_dir)
-    FileUtil.DeleteDirFiles(CfgData.OutCShapScriptsPathData())
+    FileUtil.DeleteDirFiles(CfgData.OutCShapScriptsPathData(), None, None, ['.meta'])
     FileUtil.CopyDirFiles(ConfigData.CShapScriptsPath, CfgData.OutCShapScriptsPathData())
 
 
