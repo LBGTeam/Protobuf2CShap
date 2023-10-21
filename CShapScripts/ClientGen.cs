@@ -24,9 +24,12 @@ namespace Myproto {
     static ClientGenReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChBjbGllbnRfZ2VuLnByb3RvEgdteXByb3RvKloKAklEEggKBE5PTkUQABIQ",
-            "CgtNc2dfUGluZ1JFURDoBxIQCgtNc2dfUGluZ0FDSxDpBxISCg1Nc2dfVmVy",
-            "aWZ5UkVREOoHEhIKDU1zZ19WZXJpZnlBQ0sQ6wdiBnByb3RvMw=="));
+            "ChBjbGllbnRfZ2VuLnByb3RvEgdteXByb3RvKrwBCgJJRBIICgROT05FEAAS",
+            "EAoLTXNnX1BpbmdSRVEQ6AcSEAoLTXNnX1BpbmdBQ0sQ6QcSEgoNTXNnX1Zl",
+            "cmlmeVJFURDqBxISCg1Nc2dfVmVyaWZ5QUNLEOsHEhUKEE1zZ19FbnRlckdh",
+            "bWVSRVEQ7AcSFQoQTXNnX0VudGVyR2FtZUFDSxDtBxIYChNNc2dfU2VsZWN0",
+            "U2VydmVyUkVREO4HEhgKE01zZ19TZWxlY3RTZXJ2ZXJBQ0sQ7wdiBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Myproto.ID), }, null, null));
@@ -44,6 +47,10 @@ namespace Myproto {
     [pbr::OriginalName("Msg_PingACK")] MsgPingAck = 1001,
     [pbr::OriginalName("Msg_VerifyREQ")] MsgVerifyReq = 1002,
     [pbr::OriginalName("Msg_VerifyACK")] MsgVerifyAck = 1003,
+    [pbr::OriginalName("Msg_EnterGameREQ")] MsgEnterGameReq = 1004,
+    [pbr::OriginalName("Msg_EnterGameACK")] MsgEnterGameAck = 1005,
+    [pbr::OriginalName("Msg_SelectServerREQ")] MsgSelectServerReq = 1006,
+    [pbr::OriginalName("Msg_SelectServerACK")] MsgSelectServerAck = 1007,
   }
 
   #endregion

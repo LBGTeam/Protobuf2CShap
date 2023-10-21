@@ -25,19 +25,28 @@ namespace Myproto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChJjbGllbnRfbG9naW4ucHJvdG8SB215cHJvdG8aDGNvbW1vbi5wcm90byIJ",
-            "CgdQaW5nUkVRImUKB1BpbmdBQ0sSIAoDUmV0GAEgASgOMhMubXlwcm90by5S",
-            "ZXN1bHRDb2RlEhIKClNlcnZlclRpbWUYAiABKAMSDAoEWm9uZRgDIAEoBRIW",
-            "Cg5UaW1lWm9uZU9mZnNldBgEIAEoBSIuCglWZXJpZnlSRVESDwoHYWNjb3Vu",
-            "dBgBIAEoCRIQCghwYXNzd29yZBgCIAEoCSJDCglWZXJpZnlBQ0sSIAoDUmV0",
-            "GAEgASgOMhMubXlwcm90by5SZXN1bHRDb2RlEhQKDEVuY3J5cHRUb2tlbhgC",
-            "IAEoCWIGcHJvdG8z"));
+            "CgdQaW5nUkVRIkQKB1BpbmdBQ0sSIAoDUmV0GAEgASgOMhMubXlwcm90by5S",
+            "ZXN1bHRDb2RlEhcKD1NlcnZlclRpbWVzdGFtcBgCIAEoAyIcCglWZXJpZnlS",
+            "RVESDwoHVmVyc2lvbhgBIAEoCSJrCglWZXJpZnlBQ0sSIAoDUmV0GAEgASgO",
+            "MhMubXlwcm90by5SZXN1bHRDb2RlEhAKCENsaWVudElwGAIgASgJEhYKDlRp",
+            "bWVab25lT2Zmc2V0GAQgASgFEhIKCkVuY3J5cHRLZXkYBSABKAwiMQoMRW50",
+            "ZXJHYW1lUkVREg8KB0FjY291bnQYASABKAkSEAoIUGFzc3dvcmQYAiABKAki",
+            "RAoMRW50ZXJHYW1lQUNLEiAKA1JldBgBIAEoDjITLm15cHJvdG8uUmVzdWx0",
+            "Q29kZRISCgpTZXJ2ZXJMaXN0GAIgAygFIiMKD1NlbGVjdFNlcnZlclJFURIQ",
+            "CghTZXJ2ZXJJZBgBIAEoBSJFCg9TZWxlY3RTZXJ2ZXJBQ0sSIAoDUmV0GAEg",
+            "ASgOMhMubXlwcm90by5SZXN1bHRDb2RlEhAKCFJvbGVMaXN0GAIgAygFYgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Myproto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Myproto.PingREQ), global::Myproto.PingREQ.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Myproto.PingACK), global::Myproto.PingACK.Parser, new[]{ "Ret", "ServerTime", "Zone", "TimeZoneOffset" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Myproto.VerifyREQ), global::Myproto.VerifyREQ.Parser, new[]{ "Account", "Password" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Myproto.VerifyACK), global::Myproto.VerifyACK.Parser, new[]{ "Ret", "EncryptToken" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Myproto.PingACK), global::Myproto.PingACK.Parser, new[]{ "Ret", "ServerTimestamp" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Myproto.VerifyREQ), global::Myproto.VerifyREQ.Parser, new[]{ "Version" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Myproto.VerifyACK), global::Myproto.VerifyACK.Parser, new[]{ "Ret", "ClientIp", "TimeZoneOffset", "EncryptKey" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Myproto.EnterGameREQ), global::Myproto.EnterGameREQ.Parser, new[]{ "Account", "Password" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Myproto.EnterGameACK), global::Myproto.EnterGameACK.Parser, new[]{ "Ret", "ServerList" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Myproto.SelectServerREQ), global::Myproto.SelectServerREQ.Parser, new[]{ "ServerId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Myproto.SelectServerACK), global::Myproto.SelectServerACK.Parser, new[]{ "Ret", "RoleList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -233,9 +242,7 @@ namespace Myproto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PingACK(PingACK other) : this() {
       ret_ = other.ret_;
-      serverTime_ = other.serverTime_;
-      zone_ = other.zone_;
-      timeZoneOffset_ = other.timeZoneOffset_;
+      serverTimestamp_ = other.serverTimestamp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -257,39 +264,15 @@ namespace Myproto {
       }
     }
 
-    /// <summary>Field number for the "ServerTime" field.</summary>
-    public const int ServerTimeFieldNumber = 2;
-    private long serverTime_;
+    /// <summary>Field number for the "ServerTimestamp" field.</summary>
+    public const int ServerTimestampFieldNumber = 2;
+    private long serverTimestamp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long ServerTime {
-      get { return serverTime_; }
+    public long ServerTimestamp {
+      get { return serverTimestamp_; }
       set {
-        serverTime_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "Zone" field.</summary>
-    public const int ZoneFieldNumber = 3;
-    private int zone_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int Zone {
-      get { return zone_; }
-      set {
-        zone_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "TimeZoneOffset" field.</summary>
-    public const int TimeZoneOffsetFieldNumber = 4;
-    private int timeZoneOffset_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int TimeZoneOffset {
-      get { return timeZoneOffset_; }
-      set {
-        timeZoneOffset_ = value;
+        serverTimestamp_ = value;
       }
     }
 
@@ -309,9 +292,7 @@ namespace Myproto {
         return true;
       }
       if (Ret != other.Ret) return false;
-      if (ServerTime != other.ServerTime) return false;
-      if (Zone != other.Zone) return false;
-      if (TimeZoneOffset != other.TimeZoneOffset) return false;
+      if (ServerTimestamp != other.ServerTimestamp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -320,9 +301,7 @@ namespace Myproto {
     public override int GetHashCode() {
       int hash = 1;
       if (Ret != global::Myproto.ResultCode.NoError) hash ^= Ret.GetHashCode();
-      if (ServerTime != 0L) hash ^= ServerTime.GetHashCode();
-      if (Zone != 0) hash ^= Zone.GetHashCode();
-      if (TimeZoneOffset != 0) hash ^= TimeZoneOffset.GetHashCode();
+      if (ServerTimestamp != 0L) hash ^= ServerTimestamp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -345,17 +324,9 @@ namespace Myproto {
         output.WriteRawTag(8);
         output.WriteEnum((int) Ret);
       }
-      if (ServerTime != 0L) {
+      if (ServerTimestamp != 0L) {
         output.WriteRawTag(16);
-        output.WriteInt64(ServerTime);
-      }
-      if (Zone != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(Zone);
-      }
-      if (TimeZoneOffset != 0) {
-        output.WriteRawTag(32);
-        output.WriteInt32(TimeZoneOffset);
+        output.WriteInt64(ServerTimestamp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -371,17 +342,9 @@ namespace Myproto {
         output.WriteRawTag(8);
         output.WriteEnum((int) Ret);
       }
-      if (ServerTime != 0L) {
+      if (ServerTimestamp != 0L) {
         output.WriteRawTag(16);
-        output.WriteInt64(ServerTime);
-      }
-      if (Zone != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(Zone);
-      }
-      if (TimeZoneOffset != 0) {
-        output.WriteRawTag(32);
-        output.WriteInt32(TimeZoneOffset);
+        output.WriteInt64(ServerTimestamp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -396,14 +359,8 @@ namespace Myproto {
       if (Ret != global::Myproto.ResultCode.NoError) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Ret);
       }
-      if (ServerTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ServerTime);
-      }
-      if (Zone != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Zone);
-      }
-      if (TimeZoneOffset != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TimeZoneOffset);
+      if (ServerTimestamp != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ServerTimestamp);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -420,14 +377,8 @@ namespace Myproto {
       if (other.Ret != global::Myproto.ResultCode.NoError) {
         Ret = other.Ret;
       }
-      if (other.ServerTime != 0L) {
-        ServerTime = other.ServerTime;
-      }
-      if (other.Zone != 0) {
-        Zone = other.Zone;
-      }
-      if (other.TimeZoneOffset != 0) {
-        TimeZoneOffset = other.TimeZoneOffset;
+      if (other.ServerTimestamp != 0L) {
+        ServerTimestamp = other.ServerTimestamp;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -449,15 +400,7 @@ namespace Myproto {
             break;
           }
           case 16: {
-            ServerTime = input.ReadInt64();
-            break;
-          }
-          case 24: {
-            Zone = input.ReadInt32();
-            break;
-          }
-          case 32: {
-            TimeZoneOffset = input.ReadInt32();
+            ServerTimestamp = input.ReadInt64();
             break;
           }
         }
@@ -480,15 +423,7 @@ namespace Myproto {
             break;
           }
           case 16: {
-            ServerTime = input.ReadInt64();
-            break;
-          }
-          case 24: {
-            Zone = input.ReadInt32();
-            break;
-          }
-          case 32: {
-            TimeZoneOffset = input.ReadInt32();
+            ServerTimestamp = input.ReadInt64();
             break;
           }
         }
@@ -536,8 +471,7 @@ namespace Myproto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public VerifyREQ(VerifyREQ other) : this() {
-      account_ = other.account_;
-      password_ = other.password_;
+      version_ = other.version_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -547,7 +481,499 @@ namespace Myproto {
       return new VerifyREQ(this);
     }
 
-    /// <summary>Field number for the "account" field.</summary>
+    /// <summary>Field number for the "Version" field.</summary>
+    public const int VersionFieldNumber = 1;
+    private string version_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Version {
+      get { return version_; }
+      set {
+        version_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as VerifyREQ);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(VerifyREQ other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Version != other.Version) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Version.Length != 0) hash ^= Version.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Version.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Version);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Version.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Version);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Version.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Version);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(VerifyREQ other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Version.Length != 0) {
+        Version = other.Version;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Version = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Version = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class VerifyACK : pb::IMessage<VerifyACK>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<VerifyACK> _parser = new pb::MessageParser<VerifyACK>(() => new VerifyACK());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<VerifyACK> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Myproto.ClientLoginReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public VerifyACK() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public VerifyACK(VerifyACK other) : this() {
+      ret_ = other.ret_;
+      clientIp_ = other.clientIp_;
+      timeZoneOffset_ = other.timeZoneOffset_;
+      encryptKey_ = other.encryptKey_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public VerifyACK Clone() {
+      return new VerifyACK(this);
+    }
+
+    /// <summary>Field number for the "Ret" field.</summary>
+    public const int RetFieldNumber = 1;
+    private global::Myproto.ResultCode ret_ = global::Myproto.ResultCode.NoError;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Myproto.ResultCode Ret {
+      get { return ret_; }
+      set {
+        ret_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ClientIp" field.</summary>
+    public const int ClientIpFieldNumber = 2;
+    private string clientIp_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ClientIp {
+      get { return clientIp_; }
+      set {
+        clientIp_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "TimeZoneOffset" field.</summary>
+    public const int TimeZoneOffsetFieldNumber = 4;
+    private int timeZoneOffset_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int TimeZoneOffset {
+      get { return timeZoneOffset_; }
+      set {
+        timeZoneOffset_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "EncryptKey" field.</summary>
+    public const int EncryptKeyFieldNumber = 5;
+    private pb::ByteString encryptKey_ = pb::ByteString.Empty;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString EncryptKey {
+      get { return encryptKey_; }
+      set {
+        encryptKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as VerifyACK);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(VerifyACK other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Ret != other.Ret) return false;
+      if (ClientIp != other.ClientIp) return false;
+      if (TimeZoneOffset != other.TimeZoneOffset) return false;
+      if (EncryptKey != other.EncryptKey) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Ret != global::Myproto.ResultCode.NoError) hash ^= Ret.GetHashCode();
+      if (ClientIp.Length != 0) hash ^= ClientIp.GetHashCode();
+      if (TimeZoneOffset != 0) hash ^= TimeZoneOffset.GetHashCode();
+      if (EncryptKey.Length != 0) hash ^= EncryptKey.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Ret != global::Myproto.ResultCode.NoError) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Ret);
+      }
+      if (ClientIp.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(ClientIp);
+      }
+      if (TimeZoneOffset != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(TimeZoneOffset);
+      }
+      if (EncryptKey.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteBytes(EncryptKey);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Ret != global::Myproto.ResultCode.NoError) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Ret);
+      }
+      if (ClientIp.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(ClientIp);
+      }
+      if (TimeZoneOffset != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(TimeZoneOffset);
+      }
+      if (EncryptKey.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteBytes(EncryptKey);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Ret != global::Myproto.ResultCode.NoError) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Ret);
+      }
+      if (ClientIp.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ClientIp);
+      }
+      if (TimeZoneOffset != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TimeZoneOffset);
+      }
+      if (EncryptKey.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(EncryptKey);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(VerifyACK other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Ret != global::Myproto.ResultCode.NoError) {
+        Ret = other.Ret;
+      }
+      if (other.ClientIp.Length != 0) {
+        ClientIp = other.ClientIp;
+      }
+      if (other.TimeZoneOffset != 0) {
+        TimeZoneOffset = other.TimeZoneOffset;
+      }
+      if (other.EncryptKey.Length != 0) {
+        EncryptKey = other.EncryptKey;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Ret = (global::Myproto.ResultCode) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            ClientIp = input.ReadString();
+            break;
+          }
+          case 32: {
+            TimeZoneOffset = input.ReadInt32();
+            break;
+          }
+          case 42: {
+            EncryptKey = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Ret = (global::Myproto.ResultCode) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            ClientIp = input.ReadString();
+            break;
+          }
+          case 32: {
+            TimeZoneOffset = input.ReadInt32();
+            break;
+          }
+          case 42: {
+            EncryptKey = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class EnterGameREQ : pb::IMessage<EnterGameREQ>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<EnterGameREQ> _parser = new pb::MessageParser<EnterGameREQ>(() => new EnterGameREQ());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<EnterGameREQ> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Myproto.ClientLoginReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EnterGameREQ() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EnterGameREQ(EnterGameREQ other) : this() {
+      account_ = other.account_;
+      password_ = other.password_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EnterGameREQ Clone() {
+      return new EnterGameREQ(this);
+    }
+
+    /// <summary>Field number for the "Account" field.</summary>
     public const int AccountFieldNumber = 1;
     private string account_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -559,7 +985,7 @@ namespace Myproto {
       }
     }
 
-    /// <summary>Field number for the "password" field.</summary>
+    /// <summary>Field number for the "Password" field.</summary>
     public const int PasswordFieldNumber = 2;
     private string password_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -574,12 +1000,12 @@ namespace Myproto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as VerifyREQ);
+      return Equals(other as EnterGameREQ);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(VerifyREQ other) {
+    public bool Equals(EnterGameREQ other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -665,7 +1091,7 @@ namespace Myproto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(VerifyREQ other) {
+    public void MergeFrom(EnterGameREQ other) {
       if (other == null) {
         return;
       }
@@ -729,21 +1155,21 @@ namespace Myproto {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class VerifyACK : pb::IMessage<VerifyACK>
+  public sealed partial class EnterGameACK : pb::IMessage<EnterGameACK>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<VerifyACK> _parser = new pb::MessageParser<VerifyACK>(() => new VerifyACK());
+    private static readonly pb::MessageParser<EnterGameACK> _parser = new pb::MessageParser<EnterGameACK>(() => new EnterGameACK());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<VerifyACK> Parser { get { return _parser; } }
+    public static pb::MessageParser<EnterGameACK> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Myproto.ClientLoginReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Myproto.ClientLoginReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -754,7 +1180,7 @@ namespace Myproto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public VerifyACK() {
+    public EnterGameACK() {
       OnConstruction();
     }
 
@@ -762,16 +1188,16 @@ namespace Myproto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public VerifyACK(VerifyACK other) : this() {
+    public EnterGameACK(EnterGameACK other) : this() {
       ret_ = other.ret_;
-      encryptToken_ = other.encryptToken_;
+      serverList_ = other.serverList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public VerifyACK Clone() {
-      return new VerifyACK(this);
+    public EnterGameACK Clone() {
+      return new EnterGameACK(this);
     }
 
     /// <summary>Field number for the "Ret" field.</summary>
@@ -786,27 +1212,26 @@ namespace Myproto {
       }
     }
 
-    /// <summary>Field number for the "EncryptToken" field.</summary>
-    public const int EncryptTokenFieldNumber = 2;
-    private string encryptToken_ = "";
+    /// <summary>Field number for the "ServerList" field.</summary>
+    public const int ServerListFieldNumber = 2;
+    private static readonly pb::FieldCodec<int> _repeated_serverList_codec
+        = pb::FieldCodec.ForInt32(18);
+    private readonly pbc::RepeatedField<int> serverList_ = new pbc::RepeatedField<int>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string EncryptToken {
-      get { return encryptToken_; }
-      set {
-        encryptToken_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
+    public pbc::RepeatedField<int> ServerList {
+      get { return serverList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as VerifyACK);
+      return Equals(other as EnterGameACK);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(VerifyACK other) {
+    public bool Equals(EnterGameACK other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -814,7 +1239,7 @@ namespace Myproto {
         return true;
       }
       if (Ret != other.Ret) return false;
-      if (EncryptToken != other.EncryptToken) return false;
+      if(!serverList_.Equals(other.serverList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -823,7 +1248,7 @@ namespace Myproto {
     public override int GetHashCode() {
       int hash = 1;
       if (Ret != global::Myproto.ResultCode.NoError) hash ^= Ret.GetHashCode();
-      if (EncryptToken.Length != 0) hash ^= EncryptToken.GetHashCode();
+      hash ^= serverList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -846,10 +1271,7 @@ namespace Myproto {
         output.WriteRawTag(8);
         output.WriteEnum((int) Ret);
       }
-      if (EncryptToken.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(EncryptToken);
-      }
+      serverList_.WriteTo(output, _repeated_serverList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -864,10 +1286,7 @@ namespace Myproto {
         output.WriteRawTag(8);
         output.WriteEnum((int) Ret);
       }
-      if (EncryptToken.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(EncryptToken);
-      }
+      serverList_.WriteTo(ref output, _repeated_serverList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -881,9 +1300,7 @@ namespace Myproto {
       if (Ret != global::Myproto.ResultCode.NoError) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Ret);
       }
-      if (EncryptToken.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(EncryptToken);
-      }
+      size += serverList_.CalculateSize(_repeated_serverList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -892,16 +1309,14 @@ namespace Myproto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(VerifyACK other) {
+    public void MergeFrom(EnterGameACK other) {
       if (other == null) {
         return;
       }
       if (other.Ret != global::Myproto.ResultCode.NoError) {
         Ret = other.Ret;
       }
-      if (other.EncryptToken.Length != 0) {
-        EncryptToken = other.EncryptToken;
-      }
+      serverList_.Add(other.serverList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -921,8 +1336,9 @@ namespace Myproto {
             Ret = (global::Myproto.ResultCode) input.ReadEnum();
             break;
           }
-          case 18: {
-            EncryptToken = input.ReadString();
+          case 18:
+          case 16: {
+            serverList_.AddEntriesFrom(input, _repeated_serverList_codec);
             break;
           }
         }
@@ -944,8 +1360,417 @@ namespace Myproto {
             Ret = (global::Myproto.ResultCode) input.ReadEnum();
             break;
           }
-          case 18: {
-            EncryptToken = input.ReadString();
+          case 18:
+          case 16: {
+            serverList_.AddEntriesFrom(ref input, _repeated_serverList_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class SelectServerREQ : pb::IMessage<SelectServerREQ>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<SelectServerREQ> _parser = new pb::MessageParser<SelectServerREQ>(() => new SelectServerREQ());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<SelectServerREQ> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Myproto.ClientLoginReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SelectServerREQ() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SelectServerREQ(SelectServerREQ other) : this() {
+      serverId_ = other.serverId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SelectServerREQ Clone() {
+      return new SelectServerREQ(this);
+    }
+
+    /// <summary>Field number for the "ServerId" field.</summary>
+    public const int ServerIdFieldNumber = 1;
+    private int serverId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ServerId {
+      get { return serverId_; }
+      set {
+        serverId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as SelectServerREQ);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(SelectServerREQ other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ServerId != other.ServerId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ServerId != 0) hash ^= ServerId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (ServerId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(ServerId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ServerId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(ServerId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (ServerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ServerId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(SelectServerREQ other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ServerId != 0) {
+        ServerId = other.ServerId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            ServerId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            ServerId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class SelectServerACK : pb::IMessage<SelectServerACK>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<SelectServerACK> _parser = new pb::MessageParser<SelectServerACK>(() => new SelectServerACK());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<SelectServerACK> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Myproto.ClientLoginReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SelectServerACK() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SelectServerACK(SelectServerACK other) : this() {
+      ret_ = other.ret_;
+      roleList_ = other.roleList_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SelectServerACK Clone() {
+      return new SelectServerACK(this);
+    }
+
+    /// <summary>Field number for the "Ret" field.</summary>
+    public const int RetFieldNumber = 1;
+    private global::Myproto.ResultCode ret_ = global::Myproto.ResultCode.NoError;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Myproto.ResultCode Ret {
+      get { return ret_; }
+      set {
+        ret_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "RoleList" field.</summary>
+    public const int RoleListFieldNumber = 2;
+    private static readonly pb::FieldCodec<int> _repeated_roleList_codec
+        = pb::FieldCodec.ForInt32(18);
+    private readonly pbc::RepeatedField<int> roleList_ = new pbc::RepeatedField<int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<int> RoleList {
+      get { return roleList_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as SelectServerACK);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(SelectServerACK other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Ret != other.Ret) return false;
+      if(!roleList_.Equals(other.roleList_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Ret != global::Myproto.ResultCode.NoError) hash ^= Ret.GetHashCode();
+      hash ^= roleList_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Ret != global::Myproto.ResultCode.NoError) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Ret);
+      }
+      roleList_.WriteTo(output, _repeated_roleList_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Ret != global::Myproto.ResultCode.NoError) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Ret);
+      }
+      roleList_.WriteTo(ref output, _repeated_roleList_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Ret != global::Myproto.ResultCode.NoError) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Ret);
+      }
+      size += roleList_.CalculateSize(_repeated_roleList_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(SelectServerACK other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Ret != global::Myproto.ResultCode.NoError) {
+        Ret = other.Ret;
+      }
+      roleList_.Add(other.roleList_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Ret = (global::Myproto.ResultCode) input.ReadEnum();
+            break;
+          }
+          case 18:
+          case 16: {
+            roleList_.AddEntriesFrom(input, _repeated_roleList_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Ret = (global::Myproto.ResultCode) input.ReadEnum();
+            break;
+          }
+          case 18:
+          case 16: {
+            roleList_.AddEntriesFrom(ref input, _repeated_roleList_codec);
             break;
           }
         }

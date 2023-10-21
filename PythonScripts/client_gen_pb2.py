@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x10\x63lient_gen.proto\x12\x07myproto*Z\n\x02ID\x12\x08\n\x04NONE\x10\x00\x12\x10\n\x0bMsg_PingREQ\x10\xe8\x07\x12\x10\n\x0bMsg_PingACK\x10\xe9\x07\x12\x12\n\rMsg_VerifyREQ\x10\xea\x07\x12\x12\n\rMsg_VerifyACK\x10\xeb\x07\x62\x06proto3'
+  serialized_pb=b'\n\x10\x63lient_gen.proto\x12\x07myproto*\xbc\x01\n\x02ID\x12\x08\n\x04NONE\x10\x00\x12\x10\n\x0bMsg_PingREQ\x10\xe8\x07\x12\x10\n\x0bMsg_PingACK\x10\xe9\x07\x12\x12\n\rMsg_VerifyREQ\x10\xea\x07\x12\x12\n\rMsg_VerifyACK\x10\xeb\x07\x12\x15\n\x10Msg_EnterGameREQ\x10\xec\x07\x12\x15\n\x10Msg_EnterGameACK\x10\xed\x07\x12\x18\n\x13Msg_SelectServerREQ\x10\xee\x07\x12\x18\n\x13Msg_SelectServerACK\x10\xef\x07\x62\x06proto3'
 )
 
 _ID = _descriptor.EnumDescriptor(
@@ -55,11 +55,31 @@ _ID = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='Msg_EnterGameREQ', index=5, number=1004,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='Msg_EnterGameACK', index=6, number=1005,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='Msg_SelectServerREQ', index=7, number=1006,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='Msg_SelectServerACK', index=8, number=1007,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=29,
-  serialized_end=119,
+  serialized_start=30,
+  serialized_end=218,
 )
 _sym_db.RegisterEnumDescriptor(_ID)
 
@@ -69,6 +89,10 @@ Msg_PingREQ = 1000
 Msg_PingACK = 1001
 Msg_VerifyREQ = 1002
 Msg_VerifyACK = 1003
+Msg_EnterGameREQ = 1004
+Msg_EnterGameACK = 1005
+Msg_SelectServerREQ = 1006
+Msg_SelectServerACK = 1007
 
 
 DESCRIPTOR.enum_types_by_name['ID'] = _ID
