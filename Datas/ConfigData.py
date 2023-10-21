@@ -2,7 +2,9 @@ import os
 
 from PyUtils import JsonUtil, PathUtil
 
+
 SavesPath = PathUtil.CheckPath(os.path.join(PathUtil.RootPath, 'Saves'), True)
+ProtosPath = PathUtil.CheckPath(os.path.join(PathUtil.RootPath, 'Protos'), True)
 CShapScriptsPath = PathUtil.CheckPath(os.path.join(PathUtil.RootPath, 'CShapScripts'), True)
 PythonScriptsPath = PathUtil.CheckPath(os.path.join(PathUtil.RootPath, 'PythonScripts'), True)
 DefProtosExePath = os.path.join(PathUtil.RootPath, 'Libs', 'protoc', 'bin', 'protoc.exe')
